@@ -20,7 +20,8 @@ class Node(object):
         self.right = right
         pass
 # ------------------------------ #
-def code(seq,node,coding_word):
+def code(seq,tab,coding_word):
+    node = tab[0]
     if node.character:
         if not seq:
             coding_word[node.character] = "0"
@@ -34,6 +35,45 @@ def code(seq,node,coding_word):
         code(seq+"1",node.right,coding_word)
         pass
     pass
+# ------------------------------ #
+def codeIterative(seq,tab,coding_word):
+
+    dict = {}
+    dict[tab[0]] = None
+    stack = []
+    stack.append(tab[0])
+
+    while stack:
+
+        curr_node = stack.pop()
+
+        if curr_node.character:
+            # if not seq:
+            #     coding_word[curr_node.character] = "0"
+            #     pass
+            # else:
+            #     coding_word[curr_node.character] = seq
+            #     pass
+
+            while dict[curr_node]:
+                print(curr_node.frequency,end="->")
+                curr_node = dict[curr_node]
+                pass
+            print(curr_node.character)
+            pass
+        else:
+            if curr_node.left:
+                stack.append(curr_node.left)
+                dict[curr_node.left] = curr_node
+                pass
+            if curr_node.right:
+                stack.append(curr_node.right)
+                dict[curr_node.right] = curr_node
+                pass
+            pass
+        pass
+    pass
+
 # ------------------------------ #
 def creat_tree_huffman_coding(tab):
     while len(tab) > 1:
@@ -49,7 +89,7 @@ def creat_tree_huffman_coding(tab):
 # ------------------------------ #
 def huffman_coding(tab,coding_word):
     creat_tree_huffman_coding(tab)
-    code("",tab[0],coding_word)
+    codeIterative("",tab[0],coding_word)
     seq = ''
     f = open(text_file, "r")
     for x in f.read():
