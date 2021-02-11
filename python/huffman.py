@@ -20,8 +20,7 @@ class Node(object):
         self.right = right
         pass
 # ------------------------------ #
-def code(seq,tab,coding_word):
-    node = tab[0]
+def code(seq,node,coding_word):
     if node.character:
         if not seq:
             coding_word[node.character] = "0"
@@ -30,45 +29,39 @@ def code(seq,tab,coding_word):
             coding_word[node.character] = seq
             pass
         pass
+        print(node.character,coding_word[node.character])
     else:
         code(seq+"0",node.left,coding_word)
         code(seq+"1",node.right,coding_word)
         pass
     pass
 # ------------------------------ #
-def codeIterative(seq,tab,coding_word):
-
-    dict = {}
-    dict[tab[0]] = None
+def codeIterative(seq,node,coding_word):
     stack = []
-    stack.append(tab[0])
-
+    stack.append(node)
+    seq_bin = []
+    seq_bin.append(seq)
     while stack:
-
         curr_node = stack.pop()
+        curr_seq = seq_bin.pop()
 
         if curr_node.character:
-            # if not seq:
-            #     coding_word[curr_node.character] = "0"
-            #     pass
-            # else:
-            #     coding_word[curr_node.character] = seq
-            #     pass
-
-            while dict[curr_node]:
-                print(curr_node.frequency,end="->")
-                curr_node = dict[curr_node]
+            if not curr_seq:
+                coding_word[curr_node.character] = "0"
                 pass
-            print(curr_node.character)
+            else:
+                coding_word[curr_node.character] = curr_seq
+                pass
+            print(curr_node.character,coding_word[curr_node.character])
             pass
         else:
             if curr_node.left:
                 stack.append(curr_node.left)
-                dict[curr_node.left] = curr_node
+                seq_bin.append(curr_seq + '0')
                 pass
             if curr_node.right:
                 stack.append(curr_node.right)
-                dict[curr_node.right] = curr_node
+                seq_bin.append(curr_seq + '1')
                 pass
             pass
         pass
@@ -89,6 +82,7 @@ def creat_tree_huffman_coding(tab):
 # ------------------------------ #
 def huffman_coding(tab,coding_word):
     creat_tree_huffman_coding(tab)
+    # code("",tab[0],coding_word)
     codeIterative("",tab[0],coding_word)
     seq = ''
     f = open(text_file, "r")
