@@ -11,8 +11,8 @@ import pickle
 text_file = 'demo.txt'
 coding_file = 'demo_coding.dat'
 decoding_file = 'demo_decoding.txt'
-
-
+coding_file_shannon_fano = 'demo_shannon_fano_coding.dat'
+decoding_file_shannon_fano = 'demo_shannon_fano_decoding.txt'
 # ------------------------------ #
 class Node(object):
     frequency = 0
@@ -57,14 +57,22 @@ decoding_huffman_text = open(decoding_file, "r")
 
 
 coding_shannon_fano_word = {}
+decoding_shannon_fano_word = {}
 text = open(text_file, "r")
 get_file_character(tab,text)
 shannon_fano.shannon_fano_coding(tab,coding_shannon_fano_word)
+coding_shannon_fano_text = open(coding_file_shannon_fano, "r")
+shannon_fano.shannon_fano_decoding(coding_shannon_fano_word,decoding_shannon_fano_word)
+decoding_shannon_fano_text = open(decoding_file_shannon_fano, "r")
 
+print(coding_huffman_text.read())
+print()
+print(decoding_huffman_text.read())
+print()
 
-# print(coding_text.read())
-# print()
-# print(decoding_text.read())
-# print()
+print(coding_shannon_fano_text.read())
+print()
+print(decoding_shannon_fano_text.read())
+print()
 
 # writing_file.cmp()
