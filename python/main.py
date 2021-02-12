@@ -5,6 +5,7 @@ import base64
 import quickSort
 import writing_file
 import huffman
+import shannon_fano
 import pickle
 # text_file = 'test.png'
 text_file = 'demo.txt'
@@ -45,14 +46,20 @@ def get_file_character(tab,text):
     pass
 # ------------------------------ #
 tab = []
-coding_word = {}
-decoding_word = {}
+coding_huffman_word = {}
+decoding_huffman_word = {}
 text = open(text_file, "r")
 get_file_character(tab,text)
-huffman.huffman_coding(tab,coding_word)
-coding_text = open(coding_file, "r")
-huffman.huffman_decoding(coding_word,decoding_word)
-decoding_text = open(decoding_file, "r")
+huffman.huffman_coding(tab,coding_huffman_word)
+coding_huffman_text = open(coding_file, "r")
+huffman.huffman_decoding(coding_huffman_word,decoding_huffman_word)
+decoding_huffman_text = open(decoding_file, "r")
+
+
+coding_shannon_fano_word = {}
+text = open(text_file, "r")
+get_file_character(tab,text)
+shannon_fano.shannon_fano_coding(tab,coding_shannon_fano_word)
 
 
 # print(coding_text.read())

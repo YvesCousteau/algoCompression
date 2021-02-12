@@ -11,6 +11,13 @@ def writing_code_seq(seq):
     # pickle.dump(text_bytes,f)
     f.write(text_bytes)
 # ------------------------------ #
+def writing_code_seq_bit(seq):
+    open(coding_file, 'w').close()
+    f = open(coding_file, "wb")
+    text_bytes = seq.encode('ascii')
+    # pickle.dump(text_bytes,f)
+    f.write(text_bytes)
+# ------------------------------ #
 def writing_decode_seq(seq):
     open(decoding_file, 'w').close()
     f = open(decoding_file, "a")

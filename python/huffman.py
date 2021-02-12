@@ -29,7 +29,6 @@ def code(seq,node,coding_word):
             coding_word[node.character] = seq
             pass
         pass
-        print(node.character,coding_word[node.character])
     else:
         code(seq+"0",node.left,coding_word)
         code(seq+"1",node.right,coding_word)
@@ -52,7 +51,6 @@ def codeIterative(seq,node,coding_word):
             else:
                 coding_word[curr_node.character] = curr_seq
                 pass
-            print(curr_node.character,coding_word[curr_node.character])
             pass
         else:
             if curr_node.left:
