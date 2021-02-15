@@ -3,7 +3,8 @@ from operator import itemgetter
 import math
 import writing_file
 import quickSort
-text_file = 'demo.txt'
+# text_file = 'demo.txt'
+text_file = 'hello_world.txt'
 coding_file = 'demo_coding.dat'
 decoding_file = 'demo_decoding.txt'
 coding_file_shannon_fano = 'demo_shannon_fano_coding.dat'

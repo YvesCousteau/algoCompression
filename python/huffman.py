@@ -2,7 +2,8 @@ import quickSort
 import writing_file
 import pickle
 # text_file = 'test.png'
-text_file = 'demo.txt'
+# text_file = 'demo.txt'
+text_file = 'hello_world.txt'
 coding_file = 'demo_coding.dat'
 decoding_file = 'demo_decoding.txt'
 # ------------------------------ #

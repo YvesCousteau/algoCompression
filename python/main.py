@@ -8,7 +8,8 @@ import huffman
 import shannon_fano
 import pickle
 # text_file = 'test.png'
-text_file = 'demo.txt'
+# text_file = 'demo.txt'
+text_file = 'hello_world.txt'
 coding_file = 'demo_coding.dat'
 decoding_file = 'demo_decoding.txt'
 coding_file_shannon_fano = 'demo_shannon_fano_coding.dat'
@@ -65,14 +66,37 @@ coding_shannon_fano_text = open(coding_file_shannon_fano, "r")
 shannon_fano.shannon_fano_decoding(coding_shannon_fano_word,decoding_shannon_fano_word)
 decoding_shannon_fano_text = open(decoding_file_shannon_fano, "r")
 
-print(coding_huffman_text.read())
-print()
-print(decoding_huffman_text.read())
-print()
+text_p1 = open(text_file, "r")
+text_p2 = open(text_file, "r")
+coding_huffman_print = coding_huffman_text.read()
+decoding_huffman_print = decoding_huffman_text.read()
+coding_shannon_fano_print = coding_shannon_fano_text.read()
+decoding_shannon_fano_print = decoding_shannon_fano_text.read()
+print("Methode Huffman :\n")
+print(text_p1.read())
+print("<-- coding -->\n")
+print(coding_huffman_print)
+tmp_huffman = 0
+for i in coding_huffman_print:
+    tmp_huffman = tmp_huffman + 1
+    pass
+print("lenght :",tmp_huffman)
+print("\n<-- decoding -->\n")
+print(decoding_huffman_print)
+print("--------------------------\n")
+print("Methode Shannon-Fano :\n")
+print(text_p2.read())
+print("<-- coding -->\n")
+print(coding_shannon_fano_print)
+tmp_shannon_fano = 0
+for i in coding_shannon_fano_print:
+    tmp_shannon_fano = tmp_shannon_fano + 1
+    pass
+print("lenght :",tmp_shannon_fano)
+print("\n<-- decoding -->\n")
+print(decoding_shannon_fano_print)
+print("--------------------------\n")
+print("rapport -> huffman / shannon - fano :",tmp_huffman/tmp_shannon_fano)
 
-print(coding_shannon_fano_text.read())
-print()
-print(decoding_shannon_fano_text.read())
-print()
 
 # writing_file.cmp()
