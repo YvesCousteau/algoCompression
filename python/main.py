@@ -7,6 +7,9 @@ import writing_file
 import huffman
 import shannon_fano
 import pickle
+from datetime import datetime
+
+
 # text_file = 'test.png'
 # text_file = 'demo.txt'
 text_file = 'hello_world.txt'
@@ -49,11 +52,27 @@ def get_file_character(tab,text):
 tab = []
 coding_huffman_word = {}
 decoding_huffman_word = {}
+size = 0
 text = open(text_file, "r")
 get_file_character(tab,text)
+for i in tab:
+    size = size + i.frequency
+    pass
+
+
+time_huffman_coding_1 = datetime.now()
 huffman.huffman_coding(tab,coding_huffman_word)
+time_huffman_coding_2 = datetime.now()
+print("Huffman coding:", time_huffman_coding_2 - time_huffman_coding_1,"pour n:",size)
 coding_huffman_text = open(coding_file, "r")
+
+
+
+time_huffman_decoding_1 = datetime.now()
 huffman.huffman_decoding(coding_huffman_word,decoding_huffman_word)
+time_huffman_decoding_2 = datetime.now()
+
+print("Huffman decoding:", (time_huffman_decoding_2 - time_huffman_decoding_1),"pour n:",size)
 decoding_huffman_text = open(decoding_file, "r")
 
 
@@ -61,9 +80,19 @@ coding_shannon_fano_word = {}
 decoding_shannon_fano_word = {}
 text = open(text_file, "r")
 get_file_character(tab,text)
+
+
+time_shannon_fano_coding_1 = datetime.now()
 shannon_fano.shannon_fano_coding(tab,coding_shannon_fano_word)
+time_shannon_fano_coding_2 = datetime.now()
+print("Shannon-Fano coding:", (time_shannon_fano_coding_2 - time_shannon_fano_coding_1),"pour n:",size)
 coding_shannon_fano_text = open(coding_file_shannon_fano, "r")
+
+
+time_shannon_fano_decoding_1 = datetime.now()
 shannon_fano.shannon_fano_decoding(coding_shannon_fano_word,decoding_shannon_fano_word)
+time_shannon_fano_decoding_2 = datetime.now()
+print("Shannon-Fano decoding:", (time_shannon_fano_decoding_2 - time_shannon_fano_decoding_1),"pour n:",size)
 decoding_shannon_fano_text = open(decoding_file_shannon_fano, "r")
 
 text_p1 = open(text_file, "r")
